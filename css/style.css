@@ -11,11 +11,15 @@ body {
     background-color: rgba(0, 255, 255, 0.11); }
   body #container {
     text-align: center; }
+    body #container #map {
+      margin: auto; }
     body #container .formPlacment {
       padding-top: 40px; }
       body #container .formPlacment input[type=text] {
         min-width: 20vw;
-        min-height: 3vh; }
+        min-height: 3vh;
+        outline: none;
+        font-size: 20px; }
       body #container .formPlacment .buttons {
         padding-top: 20px; }
         body #container .formPlacment .buttons input {
