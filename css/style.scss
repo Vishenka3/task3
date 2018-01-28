@@ -1,0 +1,36 @@
+body {
+  padding: 0;
+  margin: 0;
+  font-size: 15px;
+  header{
+    min-height: 50px;
+    text-align: center;
+    font-size: 45px;
+    font-weight: 700;
+    font-family: "Book Antiqua", serif;
+    background-color: rgba(0, 255, 255, 0.11);
+  }
+  #container{
+    text-align: center;
+    .formPlacment{
+      padding-top: 40px;
+      input[type=text]{
+        min-width: 20vw;
+        min-height: 3vh;
+      }
+      .buttons{
+        padding-top: 20px;
+        input{
+          color:white;
+          background-color: #ff5a27;
+          border: none;
+          min-height: 35px;
+          min-width: 100px;
+          &:hover{
+            background-color: #d65829;
+          }
+        }
+      }
+    }
+  }
+}

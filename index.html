@@ -3,8 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <title>Города</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/main.js"></script>
 </head>
 <body>
-
+    <header>Города</header>
+    <div id="container">
+        <div class="formPlacment">
+            <h1>Введите город</h1>
+            <form onsubmit="">
+                <input type="text" id="city" name="login" maxlength="32" required>
+                <div class="buttons">
+                    <input type="submit" class="answer" id="submit" value="Ответить">
+                    <input type="reset" id="reset" value="Сдаться" >
+                </div>
+            </form>
+        </div>
+        <div id="answerPlace">Тут ответ компуктера</div>
+    </div>
+    <footer></footer>
 </body>
 </html>
