@@ -27,8 +27,11 @@ body {
           background-color: #ff5a27;
           border: none;
           min-height: 35px;
-          min-width: 100px; }
+          min-width: 100px;
+          outline: none; }
           body #container .formPlacment .buttons input:hover {
             background-color: #d65829; }
+          body #container .formPlacment .buttons input:active {
+            transform: scale(0.95); }
 
 /*# sourceMappingURL=style.css.map */

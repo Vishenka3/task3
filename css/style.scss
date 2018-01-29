@@ -31,8 +31,12 @@ body {
           border: none;
           min-height: 35px;
           min-width: 100px;
+          outline: none;
           &:hover{
             background-color: #d65829;
+          }
+          &:active{
+            transform: scale(0.95);;
           }
         }
       }

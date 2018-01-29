@@ -1,46 +1,41 @@
 $(document).ready(function() {
+
     ymaps.ready(function() {
         var country = ymaps.geolocation.country;
         var city = ymaps.geolocation.city;
 
-        var myGeocoder = ymaps.geocode("Пинск");
-        myGeocoder.then(
-            function (res) {
-                console.log('Координаты объекта :' + res.geoObjects.get(0).geometry.getCoordinates());
-                var coords = res.geoObjects.get(0).geometry.getCoordinates();
-
-                var myMap = new ymaps.Map("map", {
-                        center: coords,
-                        zoom: 4
-                });
-
-                myGeoObject = new ymaps.GeoObject({
-                     geometry: {
-                         type: "Point",// тип геометрии - точка
-                         coordinates: coords // координаты точки
-                     }
-                 });
-                myMap.geoObjects.add(myGeoObject);
-
-                /*myMap.geoObjects.add(
-                    new ymaps.Placemark(myGeocoder.geoObjects.get(0).geometry.getCoordinates(),
-                        {iconContent: 'Пинск'},
-                        {preset: 'twirl#greenStretchyIcon'}
-                    )
-                );*/
-
-                myMap.balloon.open(myMap.getCenter(),
-                    {
-                        contentHeader: 'Пинск'
-                    }
-                );
-            },
-            function (err) {
-                console.log('Ошибка');
-            }
-        );
+        var myMap = new ymaps.Map("map", {
+            center: [52.111406,26.102473],
+            zoom: 5
+        });
 
         $('#country').html('Ваша страна: '+country);
         $('#city').html('Ваш город: '+city);
+
+        $("#submit").click(function () {
+            var cityName = $("#cityName").val();
+            console.log(cityName);
+
+            var myGeocoder = ymaps.geocode(cityName);
+            myGeocoder.then(
+                function (res) {
+                    console.log('Координаты объекта :' + res.geoObjects.get(0).geometry.getCoordinates());
+                    var coords = res.geoObjects.get(0).geometry.getCoordinates();
+                    myMap.geoObjects.add(
+                        new ymaps.Placemark(coords,
+                            {iconContent: ''},
+                            {preset: 'twirl#redStretchyIcon'}
+                        )
+                    );
+
+                },
+                function (err) {
+                    console.log('Ошибка');
+                }
+            );
+        });
     });
+
+
 });
+
