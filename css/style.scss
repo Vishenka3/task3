@@ -17,6 +17,8 @@ body {
     }
     .formPlacment{
       input[type=text]{
+        text-align: center;
+        border-radius: 3vh;
         min-width: 20vw;
         min-height: 3vh;
         outline: none;
@@ -26,13 +28,13 @@ body {
         padding-top: 20px;
         input{
           color:white;
-          background-color: #ff5a27;
+          background-color: #9406d4;
           border: none;
           min-height: 35px;
           min-width: 100px;
           outline: none;
           &:hover{
-            background-color: #d65829;
+            background-color: #6c0699;
           }
           &:active{
             transform: scale(0.95);;

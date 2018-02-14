@@ -1,0 +1,49 @@
+#modal_form {
+    width: 20vw;
+    height: 30vh;
+    border-radius: 3vh;
+    border: 1px #000 solid;
+    background: rgba(255, 255, 255, 0.54);
+    position: fixed;
+    top: 35vh;
+    left: 40vw;
+    display: none;
+    opacity: 0;
+    z-index: 5;
+    font-weight: 700;
+    font-size: 1.3em;
+    color: #730080d9;
+    text-align: center;
+}
+#smallText{
+    width: 100%;
+    text-align: center;
+}
+#overlay {
+    z-index:3;
+    position:fixed;
+    background-color: #858585;
+    opacity:0.8;
+    -moz-opacity:0.8;
+    filter:alpha(opacity=80);
+    width:100%;
+    height:100%;
+    top:0;
+    left:0;
+    cursor:pointer;
+    display:none;
+}
+.gameResult{
+    display: none;
+    font-size: 2.5em;
+}
+#answersList{
+    padding: 20px;
+    overflow: auto;
+}
+#answersList div {
+    display: inline;
+    width: 40%;
+    margin: 0;
+    height: auto;
+}

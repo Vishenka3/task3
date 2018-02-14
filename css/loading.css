@@ -1,0 +1,217 @@
+.cssload-container *, .cssload-container *:before, .cssload-container *:after{
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+}
+
+.cssload-container {
+    margin: 20px auto;
+    position: relative;
+    width: 97px;
+    height: 97px;
+}
+.cssload-container > div {
+    float: left;
+    background: rgb(185,108,255);
+    height: 100%;
+    width: 5px;
+    margin-right: 1px;
+    display: inline-block;
+}
+
+.cssload-container .cssload-shaft1 {
+    animation-delay: 0.06s;
+    -moz-animation-delay: 0.06s;
+    -o-animation-delay: 0.06s;
+}
+.cssload-container .cssload-shaft2 {
+    animation-delay: 0.12s;
+    -moz-animation-delay: 0.12s;
+    -o-animation-delay: 0.12s;
+}
+.cssload-container .cssload-shaft3 {
+    animation-delay: 0.17s;
+    -moz-animation-delay: 0.17s;
+    -o-animation-delay: 0.17s;
+}
+.cssload-container .cssload-shaft4 {
+    animation-delay: 0.23s;
+    -moz-animation-delay: 0.23s;
+    -o-animation-delay: 0.23s;
+}
+.cssload-container .cssload-shaft5 {
+    animation-delay: 0.29s;
+    -moz-animation-delay: 0.29s;
+    -o-animation-delay: 0.29s;
+}
+.cssload-container .cssload-shaft6 {
+    animation-delay: 0.35s;
+    -moz-animation-delay: 0.35s;
+    -o-animation-delay: 0.35s;
+}
+.cssload-container .cssload-shaft7 {
+    animation-delay: 0.4s;
+    -moz-animation-delay: 0.4s;
+    -o-animation-delay: 0.4s;
+}
+.cssload-container .cssload-shaft8 {
+    animation-delay: 0.46s;
+    -moz-animation-delay: 0.46s;
+    -o-animation-delay: 0.46s;
+}
+.cssload-container .cssload-shaft9 {
+    animation-delay: 0.52s;
+    -moz-animation-delay: 0.52s;
+    -o-animation-delay: 0.52s;
+}
+.cssload-container .cssload-shaft10 {
+    animation-delay: 0.58s;
+    -moz-animation-delay: 0.58s;
+    -o-animation-delay: 0.58s;
+}
+
+.cssload-container > div {
+    background: transparent;
+    border: 4px solid transparent;
+    border-color: transparent transparent transparent rgb(185,108,255);
+    border-radius: 100%;
+    -moz-border-radius: 100%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+/*    transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);*/
+    transform: translate(-50%, -50%) rotate(0);
+    -moz-transform: translate(-50%, -50%) rotate(0);
+    -ms-transform: translate(-50%, -50%) rotate(0);
+    -o-transform: translate(-50%, -50%) rotate(0);
+    animation: cssload-fire 2.3s infinite ease-in-out;
+    -moz-animation: cssload-fire 2.3s infinite ease-in-out;
+    -o-animation: cssload-fire 2.3s infinite ease-in-out;
+}
+.cssload-container .cssload-shaft1 {
+    animation-delay: 0.12s;
+    -moz-animation-delay: 0.12s;
+    -o-animation-delay: 0.12s;
+    width: 19px;
+    height: 19px;
+}
+.cssload-container .cssload-shaft2 {
+    animation-delay: 0.23s;
+    -moz-animation-delay: 0.23s;
+    -o-animation-delay: 0.23s;
+    width: 24px;
+    height: 24px;
+}
+.cssload-container .cssload-shaft3 {
+    animation-delay: 0.35s;
+    -moz-animation-delay: 0.35s;
+    -o-animation-delay: 0.35s;
+    width: 29px;
+    height: 29px;
+}
+.cssload-container .cssload-shaft4 {
+    animation-delay: 0.46s;
+    -moz-animation-delay: 0.46s;
+    -o-animation-delay: 0.46s;
+    width: 34px;
+    height: 34px;
+}
+.cssload-container .cssload-shaft5 {
+    animation-delay: 0.58s;
+    -moz-animation-delay: 0.58s;
+    -o-animation-delay: 0.58s;
+    width: 39px;
+    height: 39px;
+}
+.cssload-container .cssload-shaft6 {
+    animation-delay: 0.69s;
+    -moz-animation-delay: 0.69s;
+    -o-animation-delay: 0.69s;
+    width: 44px;
+    height: 44px;
+}
+.cssload-container .cssload-shaft7 {
+    animation-delay: 0.81s;
+    -moz-animation-delay: 0.81s;
+    -o-animation-delay: 0.81s;
+    width: 49px;
+    height: 49px;
+}
+.cssload-container .cssload-shaft8 {
+    animation-delay: 0.92s;
+    -moz-animation-delay: 0.92s;
+    -o-animation-delay: 0.92s;
+    width: 54px;
+    height: 54px;
+}
+.cssload-container .cssload-shaft9 {
+    animation-delay: 1.04s;
+    -moz-animation-delay: 1.04s;
+    -o-animation-delay: 1.04s;
+    width: 58px;
+    height: 58px;
+}
+.cssload-container .cssload-shaft10 {
+    animation-delay: 1.15s;
+    -moz-animation-delay: 1.15s;
+    -o-animation-delay: 1.15s;
+    width: 63px;
+    height: 63px;
+}
+
+
+@-moz-keyframes cssload-fire {
+    50% {
+        transform: translate(-50%, -50%) rotate(360deg);
+        -moz-transform: translate(-50%, -50%) rotate(360deg);
+        -ms-transform: translate(-50%, -50%) rotate(360deg);
+        -o-transform: translate(-50%, -50%) rotate(360deg);
+        border-color: transparent transparent rgba(86, 215, 198, 0.1) rgb(86, 215, 198);
+    }
+    75% {
+        border-color: rgba(86, 215, 198, 0.1) transparent rgb(86, 215, 198);
+    }
+}
+
+@-o-keyframes cssload-fire {
+    50% {
+        transform: translate(-50%, -50%) rotate(360deg);
+        -moz-transform: translate(-50%, -50%) rotate(360deg);
+        -ms-transform: translate(-50%, -50%) rotate(360deg);
+        -o-transform: translate(-50%, -50%) rotate(360deg);
+        border-color: transparent transparent rgba(86, 215, 198, 0.1) rgb(86, 215, 198);
+    }
+    75% {
+        border-color: rgba(86, 215, 198, 0.1) transparent transparent rgb(86, 215, 198);
+    }
+}
+
+@keyframes cssload-fire {
+    50% {
+        transform: translate(-50%, -50%) rotate(360deg);
+        -moz-transform: translate(-50%, -50%) rotate(360deg);
+        -ms-transform: translate(-50%, -50%) rotate(360deg);
+        -o-transform: translate(-50%, -50%) rotate(360deg);
+        border-color: transparent transparent rgba(86, 215, 198, 0.1) rgb(86, 215, 198);
+    }
+    75% {
+        border-color: rgba(86, 215, 198, 0.1) transparent transparent #56D7C6;
+    }
+}
+
+
+@keyframes cssload-fire {
+    50% {
+        transform: translate(-50%, -50%) rotate(360deg);
+        -moz-transform: translate(-50%, -50%) rotate(360deg);
+        -ms-transform: translate(-50%, -50%) rotate(360deg);
+        -o-transform: translate(-50%, -50%) rotate(360deg);
+        border-color: transparent transparent rgba(86,215,198,0.1) rgb(86,215,198);
+    }
+    75% {
+        border-color: rgba(86,215,198,0.1) transparent transparent rgb(86,215,198);
+    }
+}

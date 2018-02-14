@@ -3,11 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <title>Города</title>
+    <link rel="shortcut icon" type="image/png" href="resources/icon.png">
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/modal.css">
+    <link rel="stylesheet" href="css/loading.css">
+
     <script src="js/main.js"></script>
-    <!--<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>-->
     <script type="text/javascript" src="js/jquery.js"></script>
-    <script type="text/javascript" src="js/papaparse.js"></script>
+    <script type="text/javascript" src="js/papaparse.min.js"></script>
     <script src="http://api-maps.yandex.ru/2.0-stable/?load=package.standard&lang=ru-RU" type="text/javascript"></script>
     <script type="text/javascript" src="js/sub.js"></script>
 </head>
@@ -15,24 +18,52 @@
     <header>Города</header>
     <div id="container">
         <div class="formPlacment">
-            <h1>Введите город</h1>
+            <h1 id="comunication">Введите город</h1>
             <form onsubmit="">
                 <input type="text" id="cityName" name="cityName" maxlength="32" required>
             </form>
             <div class="buttons">
-                <input type="submit" class="answer" id="submit" value="Ответить">
-                <input type="reset" id="reset" value="Сдаться" >
+                <input type="button" class="answer" id="submit" value="Ответить">
+                <input type="button" id="reset" value="Сдаться" >
+                <input type="button" id="speech" value="speech" >
             </div>
         </div>
-        <div id="answerPlace"><input id="fileItem" type="file" value="js/_countries.csv"></div>
-
-
-        <div id="country"></div>
-        <div id="city"></div>
-
-        <div id="map" style="width:600px; height:400px"></div>
-
+        <div id="computerAnswer"></div>
+        <div id="map" style="width:800px; height:400px"></div>
     </div>
-    <footer></footer>
+
+    <div id="modal_form">
+        <div class="cssload-container">
+            <div class="cssload-shaft1"></div>
+            <div class="cssload-shaft2"></div>
+            <div class="cssload-shaft3"></div>
+            <div class="cssload-shaft4"></div>
+            <div class="cssload-shaft5"></div>
+            <div class="cssload-shaft6"></div>
+            <div class="cssload-shaft7"></div>
+            <div class="cssload-shaft8"></div>
+            <div class="cssload-shaft9"></div>
+            <div class="cssload-shaft10"></div>
+        </div>
+        <span id="smallText">Вспоминаю города...</span>
+
+        <div class="gameResult" id="defeat" style="display: none; color: red; ">К сожалению, вы проиграли:(</div>
+        <div class="gameResult" id="victory" style="display: none; color: lawngreen;">Я не могу придумать город :( Вы победили!</div>
+        <div id="answersList" style="display: none;">
+            <!--<span id="gameResult"></span>-->
+            <div id="playerAnswersList" style="float: left; color: lawngreen;">
+                Ваши ответы:
+                <ol id="playerList">
+                </ol>
+            </div>
+            <hr style="height: 100%; width: 1px;display: inline">
+            <div id="computerAnswersList" style="float: right;color: red;">
+                Мои ответы:
+                <ol id="computerList">
+                </ol>
+            </div>
+        </div>
+    </div>
+    <div id="overlay"></div>
 </body>
 </html>
