@@ -6,10 +6,11 @@ $(document).ready(function() {
                 .animate({opacity: 1, top: '50%'}, 200);
         });
 
+    //Задание исходных данных и конфигов
     var resultsCities = [];
     var grammar;
 
-    var config = {
+    var config = {      //конфиг для Papa Parse
         delimiter: ",",
         newline: "",
         quoteChar: '',
@@ -22,17 +23,17 @@ $(document).ready(function() {
         step: undefined,
         complete: function(results) {
             resultsCities = results.data;
-            for(var i=0;i<resultsCities.length;i++){
+            for(var i=0;i<resultsCities.length;i++){        //Заполнение массива городов
                 resultsCities[i]=resultsCities[i][0];
             }
-            console.timeEnd('test callback');
-            $('#modal_form').animate({opacity: 0, top: '45%'}, 400,
+            //console.timeEnd('test callback');
+            $('#modal_form').animate({opacity: 0, top: '45%'}, 400,  //блашка для невозможности взаимодействия со страниецей и отвлечения пользователя
                 function(){
                     $(this).css('display', 'none');
                     $('#overlay').fadeOut(600);
                 });
-            grammar = "#JSGF V1.0; grammar resultsCities; public <color> = " + resultsCities.join(" | ") + " ;";
-            speechRecognitionPrepare();
+            grammar = "#JSGF V1.0; grammar resultsCities; public <color> = " + resultsCities.join(" | ") + " ;";  //задание словаря для распознавания речи
+            speechRecognitionPrepare();  //вызов функции подготовки распознавания
         },
         error: function(error) {
             console.log(error);
@@ -44,9 +45,6 @@ $(document).ready(function() {
         beforeFirstChunk: undefined,
         withCredentials: undefined
     };
-    console.time('test callback');
-    Papa.parse("cities.csv", config);
-
 
     var SpeechRecognition = SpeechRecognition || webkitSpeechRecognition;
     var SpeechGrammarList = SpeechGrammarList || webkitSpeechGrammarList;
@@ -58,7 +56,12 @@ $(document).ready(function() {
     recognition.interimResults = false;
     recognition.maxAlternatives = 1;
 
-    function speechRecognitionPrepare(){
+
+    //console.time('test callback');
+    Papa.parse("cities.csv", config);   //Вызов функции парсинка csv файла перед началом игры. Такой способ выбрал,
+                                        //т.к. подгрузка 1.5кк строк занимает от 6с времени и каждый раз обращаться к фалу было бы очень долго
+
+    function speechRecognitionPrepare(){        //Функция распознования речи
         recognition.onresult = function(event) {
             var last = event.results.length - 1;
             var city = event.results[last][0].transcript;
@@ -78,12 +81,7 @@ $(document).ready(function() {
         recognition.start();
     });
 
-    function searching() {
-        var cityName =$("#cityName").val();
-        (resultsCities.indexOf(cityName) === -1) ? console.log("error 404") : console.log("find it");
-    }
-
-    ymaps.ready(function() {
+    ymaps.ready(function() {        //Подгрузка API
         var myMap = new ymaps.Map("map", {
             center: [52.111406,26.102473],
             zoom: 3
@@ -97,7 +95,7 @@ $(document).ready(function() {
         var errorFlag = 0;
         var fairAnswer = 1;
 
-        function locate(cityName, color) {
+        function locate(cityName, color) {  //Функция геолокации
             var myGeocoder = ymaps.geocode(cityName, {results: 1, kind: 'locality'});
             myGeocoder.then(
                 function (res) {
@@ -106,7 +104,7 @@ $(document).ready(function() {
                         fairAnswer = 1;
                         var coords = res.geoObjects.get(0).geometry.getCoordinates();
                         myMap.setCenter(coords, 7);
-                        myMap.geoObjects.add(
+                        myMap.geoObjects.add(       //Размещение балуна
                             new ymaps.Placemark(coords,
                                 {iconContent: ''},
                                 {preset: 'twirl#' + color + 'StretchyIcon'}
@@ -124,7 +122,7 @@ $(document).ready(function() {
             );
         }
 
-        function computerAnswer(lastChar){
+        function computerAnswer(lastChar){      //Функция ответа компьютера
             fairAnswer = 1;
             for(var i=0;i<resultsCities.length;i++){
                 if(!resultsCities[i].charAt(0).localeCompare(lastChar)){
@@ -136,7 +134,7 @@ $(document).ready(function() {
                     if(!errorFlag && fairAnswer){
                         locate(resultsCities[i], 'red');
                         computerAnswers.push(resultsCities[i]);
-                        lastComputerChar=resultsCities[i].charAt(resultsCities[i].length-1).toUpperCase();
+                        lastComputerChar=resultsCities[i].charAt(resultsCities[i].length-1).toUpperCase(); //Последняя буква ответа компьютера
                         resultsCities.splice(i,1);
                         return 'Мой ответ: ' + computerAnswers[computerAnswers.length-1] + '. \nТебе на "'+lastComputerChar +'"';
                     }
@@ -148,7 +146,7 @@ $(document).ready(function() {
             for(i=0;i<computerAnswers.length;i++) {
                 $('#computerList').append('<li>' +computerAnswers[i] + '</li>');
             }
-            $('#overlay').fadeIn(400,
+            $('#overlay').fadeIn(400,       //Вывод модального окна с итогами, в случае невозможности подобрать подходящий город компьютером
                 function(){
                     $('#modal_form')
                         .css({'display': 'block', 'width': '70vw', 'height': '70vh', 'left': '15vw', 'background': 'white'})
@@ -160,10 +158,9 @@ $(document).ready(function() {
                     location.reload();
                 }
             );
-            //return 'Я не могу придумать город :( Ты победил!'
         }
 
-        $("#submit").click(function () {
+        $("#submit").click(function () {    //Подтвердить ввод города
             var fairAnswer = 1;
             var cityName = $("#cityName").val();
             for(var i=0;i<playerAnswers.length;i++){
@@ -180,19 +177,16 @@ $(document).ready(function() {
                 var lastChar = cityName.charAt(cityName.length - 1).toUpperCase();
                 console.log('lastChar ' + lastChar);
                 if (!lastComputerChar) {
-                    locate(cityName, 'green');
+                    locate(cityName, 'green');  //Вызов функции геолокации
                     if (!errorFlag) {
-                        //console.log('calling computerAnswer');
                         playerAnswers.push(cityName);
-                        $("#comunication").text(computerAnswer(lastChar));
-                        //console.log('lastComputerChar: ' + lastComputerChar);
+                        $("#comunication").text(computerAnswer(lastChar)); //Вызов функции ответа компьютера
                     }
                 } else {
                     if (cityName.charAt(0) === lastComputerChar) {
                         if (!errorFlag) {
                             locate(cityName, 'green');
                             $("#comunication").text(computerAnswer(lastChar));
-                            //console.log('lastComputerChar: ' + lastComputerChar);
                         }
                     }
                     else {
@@ -204,7 +198,7 @@ $(document).ready(function() {
             }
         });
 
-        $("#reset").click(function () {
+        $("#giveup").click(function () {        //Сдаться и просмотреть итоги матча
             for(var i=0;i<playerAnswers.length;i++) {
                 $('#playerList').append('<li>' +playerAnswers[i] + '</li>');
             }
@@ -220,7 +214,7 @@ $(document).ready(function() {
                     $('#answersList , #defeat').css('display','block');
                 }).click(
                 function(){
-                    location.reload();
+                    location.reload();  //Новая игра при перезагрузке страницы
                 }
             );
         });
